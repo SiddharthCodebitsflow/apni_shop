@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,5 +24,14 @@ Route::post('register',[App\Http\Controllers\Api\User_registration::class,'vendo
 Route::post('vendor-login',[App\Http\Controllers\Api\User_registration::class,'vendor_login']);
 
 Route::post('forget-password',[App\Http\Controllers\Api\User_registration::class,'forget_password']);
+
 Route::post('attribute',[App\Http\Controllers\Api\Vendor_attribute::class,'attribute']);
+
 Route::post('get-attribute',[App\Http\Controllers\Api\Vendor_attribute::class,'get_attribute']);
+
+Route::post('delete-att',[App\Http\Controllers\Api\Vendor_attribute::class,'delete_att']);
+
+Route::post('get-single-att',[App\Http\Controllers\Api\Vendor_attribute::class,'get_single_att']);
+
+Route::post('att-update',[App\Http\Controllers\Api\Vendor_attribute::class,'att_update']);
+

@@ -18,7 +18,7 @@ Route::middleware(['vendor_auth'])->group(function () {
     Route::get('/home', [App\Http\Controllers\Vendor\RedirectSession::class, 'home']);
     Route::get('/add-new-product', [App\Http\Controllers\Vendor\RedirectSession::class, 'add_new_product']);
     Route::get('/attributes', [App\Http\Controllers\Vendor\RedirectSession::class, 'attributes']);
-    Route::get('/logout', [App\Http\Controllers\Vendor\RedirectSession::class, 'logout']);
+    Route::get('/update-attribute/{id}', [App\Http\Controllers\Vendor\RedirectSession::class, 'update_attribute']);
 });
 
 Route::get('/', [App\Http\Controllers\Vendor\RedirectSession::class, 'index']);

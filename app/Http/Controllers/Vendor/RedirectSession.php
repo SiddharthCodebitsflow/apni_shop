@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Vendor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use App\Http\Controllers\Api\Vendor_attribute;
 
 class RedirectSession extends Controller
 {
@@ -72,12 +73,12 @@ class RedirectSession extends Controller
     {
         return view('vendor/add_new_product');
     }
-    public function attributes(Request $request)
+    public function attributes()
     {
-        $response = Http::post('http://127.0.0.1:8003/api/get-attribute', [
-            'user_id' => session('user_id'),
-        ]);
-        dd($response);
         return view('vendor/attributes');
+    }
+    public function update_attribute($id)
+    {
+        return view('vendor/edit_attributes')->with('att_id',$id);
     }
 }
