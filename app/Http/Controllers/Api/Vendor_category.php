@@ -3,84 +3,80 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Api\Category;
 use Illuminate\Http\Request;
 use Exception;
-use App\Models\Api\Attribute;
 
-class Vendor_attribute extends Controller
+class Vendor_category extends Controller
 {
-    public function attribute(Request $request)
+    public function insert_catgory(Request $request)
     {
         try {
             if ($request->validate([
                 'session' => 'required',
-                'att_name' => 'required',
-                'att_value' => 'required'
+                'cat_name' => 'required',
+                'cat_descreption' => 'required'
             ])) {
-                $att_value_array = explode('|', $request->att_value);
-                $att_value_data = implode(",", $att_value_array);
-                $att_values = json_encode($att_value_data);
-                $att_value = trim($att_values, '"');
-                $att_regitster = new Attribute();
-                $att_regitster->vendor_id = $request->session;
-                $att_regitster->attribute_name = $request->att_name;
-                $att_regitster->attribute_value = $att_value;
-                $att_regitster->save();
-                $attribute = Attribute::where('vendor_id', $request->session)->orderByDesc('id')->first();
+                $register = new Category();
+                $register->cat_name = $request->cat_name;
+                $register->cat_descreption = $request->cat_descreption;
+                $register->vendor_id = $request->session;
+                $register->save();
+                $category = Category::where('vendor_id', $request->session)->orderByDesc('id')->first();
                 return response()->json([
                     'status' => 200,
                     'error' => false,
-                    'att_name' => $attribute->attribute_name,
-                    'att_value' => $attribute->attribute_value,
-                    'att_id' => $attribute->id,
-                    'messages' => "Attributes Register successfully"
+                    'cat_id' => $category->id,
+                    'cat_name' => $category->cat_name,
+                    'cat_descreption' => $category->cat_descreption,
+                    'message' => 'Category has been saved'
                 ]);
             } else {
-                throw new Exception("Please Fill correct data");
-            }
-        } catch (Exception $e) {
-            return response()->json([
-                'status' => 403,
-                'error' => true,
-                'messages' => "Please Fill Correct Data",
-                'message' => $e
-            ]);
-        }
-    }
-    public function get_attribute(Request $request)
-    {
-        try {
-            if ($request->validate([
-                'user_id' => 'required',
-            ])) {
-                $user_id = $request->user_id;
-                $attribute = Attribute::where('vendor_id', $user_id)->get();
-                return response()->json([
-                    'status' => 200,
-                    'error' => false,
-                    'data' => $attribute
-                ]);
-            } else {
-                throw new Exception("Id Not Found");
+                throw new Exception("please fill correct information");
             }
         } catch (Exception $e) {
             return  response()->json([
                 'status' => 403,
                 'error' => true,
-                'messages' => "User Not found",
-                'message' => $e
+                'message' => "please fill correct information",
+                'messages' => $e
             ]);
         }
     }
 
-    public function delete_att(Request $request)
+    public function get_category(Request $request)
+    {
+        try {
+            if ($request->validate([
+                'session' => 'required'
+            ])) {
+                $category = Category::where('vendor_id', $request->session)->get();
+                return response()->json([
+                    'status' => 200,
+                    'error' => false,
+                    'data'=>$category,
+                ]);
+            } else {
+                throw new Exception("You are not Login User");
+            }
+        } catch (Exception $e) {
+            return  response()->json([
+                'status' => 403,
+                'error' => true,
+                'message' => "please fill correct information",
+                'messages' => $e.''
+            ]);
+        }
+    }
+
+    public function delete_category(Request $request)
     {
         try {
             if ($request->validate([
                 'att_id' => 'required'
             ])) {
                 $id = $request->att_id;
-                $att_delete = Attribute::where('id', $id)->delete();
+                $att_delete = Category::where('id', $id)->delete();
                 return response()->json([
                     'status' => 200,
                     'error' => false,
@@ -97,20 +93,20 @@ class Vendor_attribute extends Controller
             ]);
         }
     }
-
-    public function get_single_att(Request $request)
+    
+    public function get_single_category(Request $request)
     {
         try {
             if ($request->validate([
-                'att_id' => 'required'
+                'cat_id' => 'required'
             ])) {
-                $id = $request->att_id;
-                $att_data = Attribute::where('id', $id)->first();
+                 
+                $cat_data = Category::where('id', $request->cat_id)->first();
                 return response()->json([
                     'status' => 200,
                     'error' => false,
-                    'att_name' => $att_data->attribute_name,
-                    'att_value' => $att_data->attribute_value
+                    'cat_name' => $cat_data->cat_name,
+                    'cat_descreption' => $cat_data->cat_descreption
                 ]);
             } else {
                 throw new Exception("Id Not Found");
@@ -119,31 +115,31 @@ class Vendor_attribute extends Controller
             return  response()->json([
                 'status' => 403,
                 'error' => true,
-                'messages' => "User Not found",
+                'messages' => "Category Not found",
                 'message' => $e . ''
             ]);
         }
     }
 
-    public function att_update(Request $request)
+    public function category_update(Request $request)
     {
         try {
             if ($request->validate([
-                'att_id' => 'required',
-                'att_name' => 'required',
-                'att_value' => 'required'
+                'cat_id' => 'required',
+                'cat_name' => 'required',
+                'cat_descreption' => 'required'
             ])) {
-                $att_val = Attribute::where('id', $request->att_id)->first();
-                if (empty($att_val)) {
+                $cat_val = Category::where('id', $request->cat_id)->first();
+                if (empty($cat_val)) {
                     return response()->json([
                         'status' => 404,
                         'error' => true,
                         'message' => 'Please fill correct id'
                     ]);
                 } else {
-                    $att_val->attribute_name = $request->att_name;
-                    $att_val->attribute_value = $request->att_value;
-                    $att_val->save();
+                    $cat_val->cat_name = $request->cat_name;
+                    $cat_val->cat_descreption = $request->cat_descreption;
+                    $cat_val->save();
                     return response()->json([
                         'status' => 200,
                         'error' => false,

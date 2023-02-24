@@ -5,14 +5,14 @@ namespace App\Models\Api;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Attribute extends Model
+class Category extends Model
 {
     use HasFactory;
-    protected $table='attribute';
+    protected $table='category';
     protected $fillable=[
-        'vendor_id',
-        'attribute_name',
-        'attribute_value',
+        'cat_name',
+        'cat_descreption',
+        'vendor_id'
     ];
     protected $hidden = [
         'created_at',

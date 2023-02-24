@@ -18,7 +18,7 @@
                         <div class="accordion-body">
                             <a href="#" class="nav-link sidebar-col rounded px-2 py-2 text-white">All Product</a>
                             <a href="/add-new-product" class="nav-link sidebar-col mt-1 rounded px-2 py-2 text-white">Add new</a>
-                            <a href="#" class="nav-link sidebar-col mt-1 rounded px-2 py-2 text-white">Cateogry</a>
+                            <a href="/category" class="nav-link sidebar-col mt-1 rounded px-2 py-2 text-white">Cateogry</a>
                             <a href="#" class="nav-link sidebar-col mt-1 rounded px-2 py-2 text-white">Tag</a>
                             <a href="/attributes" class="nav-link sidebar-col mt-1 rounded px-2 py-2 text-white">Attributes</a>
                         </div>

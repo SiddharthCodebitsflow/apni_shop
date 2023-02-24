@@ -35,3 +35,13 @@ Route::post('get-single-att',[App\Http\Controllers\Api\Vendor_attribute::class,'
 
 Route::post('att-update',[App\Http\Controllers\Api\Vendor_attribute::class,'att_update']);
 
+Route::post('add-category',[App\Http\Controllers\Api\Vendor_category::class,'insert_catgory']);
+
+Route::post('get-category',[App\Http\Controllers\Api\Vendor_category::class,'get_category']);
+
+Route::post('delete-cat',[App\Http\Controllers\Api\Vendor_category::class,'delete_category']);
+
+Route::post('get-single-category',[App\Http\Controllers\Api\Vendor_category::class,'get_single_category']);
+
+Route::post('category-update',[App\Http\Controllers\Api\Vendor_category::class,'category_update']);
+

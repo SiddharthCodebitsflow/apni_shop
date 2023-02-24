@@ -69,10 +69,10 @@ class RedirectSession extends Controller
         }
     }
 
-    public function add_new_product()
-    {
-        return view('vendor/add_new_product');
-    }
+    // public function add_new_product()
+    // {
+    //     return view('vendor/add_new_product');
+    // }
     public function attributes()
     {
         return view('vendor/attributes');
@@ -80,5 +80,13 @@ class RedirectSession extends Controller
     public function update_attribute($id)
     {
         return view('vendor/edit_attributes')->with('att_id',$id);
+    }
+    public function category()
+    {
+        return view('vendor/category');
+    }
+    public function update_category($id)
+    {
+       return view('vendor/edit_category')->with('cat_id',$id);
     }
 }

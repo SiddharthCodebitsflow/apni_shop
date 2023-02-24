@@ -29,12 +29,12 @@
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
-            <tr class="text-center">
+            <!-- <tr class="text-center">
                 <td id="tbl_name">T-shirt</td>
                 <td id="tbl_value">Green,Red,Blue,White,yellow</td>
                 <td id="tbl_value"><button value="1">Edit</button></td>
                 <td id="tbl_value"><button value="1">Delete</button></td>
-            </tr>
+            </tr> -->
         </table>
     </div>
 </div>
@@ -107,14 +107,12 @@
         var user_form = {
             user_id: user_id
         };
-        console.log(user_form);
         $.ajax({
             url: window.location.origin + '/api/get-attribute',
             type: 'POST',
             dataType: 'json',
             data: user_form,
             success: function(data) {
-                console.log(data.data);
                 if (data.status == 200) {
                     for (var i in data.data) {
                         $(".table_row").after('<tr class="text-center"><td>' + data.data[i].attribute_name + '</td><td>' + data.data[i].attribute_value + '</td><td><a class="btn sidebar-col text-white" href="update-attribute/' + data.data[i].id + '">Edit</a></td><td><button class="btn sidebar-col text-white" onclick="delete_att(' + data.data[i].id + ')" id="delete" value="' + data.data[i].id + '">Delete</button></td> </tr></tr>');
@@ -137,7 +135,4 @@
             }
         })
     }
-
-
-
 </script>
