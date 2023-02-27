@@ -19,12 +19,13 @@ class CreateProductTable extends Migration
             $table->foreign('vendor_id')->references('id')->on('user');
             $table->text('product_name');
             $table->text('product_image');
+            $table->text('vendor_price');
             $table->text('regular_price');
             $table->text('sale_price');
             $table->text('inventory');
-            $table->text('attribute_name');
+            $table->text('shipping');
+            $table->text('attribute');
             $table->text('category');
-            // $table->bigInteger('category_id');
             $table->text('addition_info');
             $table->timestamps();
         });

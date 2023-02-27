@@ -213,9 +213,14 @@ select[data-multi-select-plugin] {
 }
 
 
-.select-data{
+.select-data {
     display: none;
 }
-.checkbox-block{
+
+.checkbox-block {
     gap: 10px;
+}
+
+.product-image {
+    height: 200px;
 }

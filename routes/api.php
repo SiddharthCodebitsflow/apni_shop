@@ -45,3 +45,7 @@ Route::post('get-single-category',[App\Http\Controllers\Api\Vendor_category::cla
 
 Route::post('category-update',[App\Http\Controllers\Api\Vendor_category::class,'category_update']);
 
+Route::post('add-new-product',[App\Http\Controllers\Api\Product::class,'insert_product']);
+
+Route::post('get-product',[App\Http\Controllers\Api\Product::class,'get_all_product_except_current_user']);
+

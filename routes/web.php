@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['vendor_auth'])->group(function () {
     Route::get('/home', [App\Http\Controllers\Vendor\RedirectSession::class, 'home']);
     Route::get('/logout', [App\Http\Controllers\Vendor\RedirectSession::class, 'logout']);
-    Route::get('/add-new-product', [App\Http\Controllers\Vendor\Product::class, 'add_new_product']);
+    Route::get('/add-new-product', [App\Http\Controllers\Vendor\AddProduct::class, 'add_new_product']);
     Route::get('/attributes', [App\Http\Controllers\Vendor\RedirectSession::class, 'attributes']);
     Route::get('/update-attribute/{id}', [App\Http\Controllers\Vendor\RedirectSession::class, 'update_attribute']);
     Route::get('/category', [App\Http\Controllers\Vendor\RedirectSession::class, 'category']);

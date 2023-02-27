@@ -37,7 +37,7 @@
                         <label for="">Choose Shop Image</label>
                         <input type="file" id="shop_image" class="form-control" name="shop_image" required>
                     </div>
-                   
+
                     <div class="form-grouup my-2">
                         <!-- <input type="submit" class="form-control rounded-pill bg-custome text-white"> -->
                         <button id="submit_form" type="button" class="form-control rounded-pill bg-custome text-white">Submit</button>
@@ -86,9 +86,9 @@
         if (name.length != 0 && contact.length == 10 && password.length != 0 && email.length != 0 && shop_id != 0 && address.length != 0) {
             var form = $('#contact_form')[0];
             var formData = new FormData(form);
-            console.log(formData);
+            // console.log(formData);
             $.ajax({
-                url: 'http://<?php echo $_SERVER['HTTP_HOST'] ?>/api/register',
+                url: window.location.origin + '/api/register',
                 type: 'POST',
                 dataType: 'json',
                 data: formData,

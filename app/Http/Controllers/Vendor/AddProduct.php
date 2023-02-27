@@ -8,7 +8,7 @@ use App\Models\Api\Attribute;
 use Exception;
 use App\Models\Api\Category;
 
-class Product extends Controller
+class AddProduct extends Controller
 {
     public function add_new_product()
     {
