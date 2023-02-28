@@ -27,6 +27,7 @@ class CreateProductTable extends Migration
             $table->text('attribute');
             $table->text('category');
             $table->text('addition_info');
+            $table->integer('trush_status');
             $table->timestamps();
         });
     }

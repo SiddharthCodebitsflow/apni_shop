@@ -41,6 +41,7 @@ class Product extends Controller
                     $register->attribute = $request->attribute;
                     $register->category = $request->category;
                     $register->addition_info = $request->addition_info;
+                    $register->trush_status = 1;
                     $register->save();
                     return response()->json([
                         'status' => 200,
@@ -64,7 +65,7 @@ class Product extends Controller
         }
     }
 
-    function get_all_product_except_current_user(Request $request)
+    function get_all_product_except_current_vendor(Request $request)
     {
         try {
             if ($request->validate(['session' => 'required'])) {
@@ -81,6 +82,109 @@ class Product extends Controller
                 'status' => 404,
                 'message' => 'Data is not found',
                 'error' => $e . ''
+            ]);
+        }
+    }
+    function get_all_product_of_current_vendor(Request $request)
+    {
+        try {
+            if ($request->validate(['session' => 'required'])) {
+                $fetch = Products::where('vendor_id', $request->session)->where('trush_status', 1)->orderBy("id", "desc")->get();
+                return response()->json([
+                    'status' => 200,
+                    'data' => $fetch
+                ]);
+            } else {
+                throw new Exception('session is not seted');
+            }
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Data is not found',
+                'error' => $e . ''
+            ]);
+        }
+    }
+    function get_trush_product(Request $request)
+    {
+        try {
+            if ($request->validate(['session' => 'required'])) {
+                $fetch = Products::where('vendor_id', $request->session)->where('trush_status', '==', 0)->orderBy("id", "desc")->get(['id', 'product_name', 'product_image']);
+                return response()->json([
+                    'status' => 200,
+                    'data' => $fetch
+                ]);
+            } else {
+                throw new Exception('session is not seted');
+            }
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Data is not found',
+                'error' => $e . ''
+            ]);
+        }
+    }
+
+    public function recover_product(Request $request)
+    {
+        try {
+            if ($request->validate(['product_id' => 'required'])) {
+                $product = Products::where('id', $request->product_id)->first();
+                if (empty($product)) {
+                    return response()->json([
+                        'status' => 404,
+                        'error' => true,
+                        'message' => 'Please fill correct id'
+                    ]);
+                } else {
+                    $product->trush_status = 1;
+                    $product->save();
+                    return response()->json([
+                        'status' => 200,
+                        'error' => false,
+                        'message' => 'Recover Success'
+                    ]);
+                }
+            } else {
+                throw new Exception('product id is required');
+            }
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 400,
+                'error' => $e . '',
+                'message' => 'unavalable product'
+            ]);
+        }
+    }
+    public function delete_product(Request $request)
+    {
+        try {
+            if ($request->validate(['product_id' => 'required'])) {
+                $product = Products::where('id', $request->product_id)->first();
+                if (empty($product)) {
+                    return response()->json([
+                        'status' => 404,
+                        'error' => true,
+                        'message' => 'Please fill correct id'
+                    ]);
+                } else {
+                    $product->trush_status = 0;
+                    $product->save();
+                    return response()->json([
+                        'status' => 200,
+                        'error' => false,
+                        'message' => 'Recover Success'
+                    ]);
+                }
+            } else {
+                throw new Exception('product id is required');
+            }
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 400,
+                'error' => $e . '',
+                'message' => 'unavalable product'
             ]);
         }
     }

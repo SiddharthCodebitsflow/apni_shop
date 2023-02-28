@@ -22,6 +22,8 @@ Route::middleware(['vendor_auth'])->group(function () {
     Route::get('/update-attribute/{id}', [App\Http\Controllers\Vendor\RedirectSession::class, 'update_attribute']);
     Route::get('/category', [App\Http\Controllers\Vendor\RedirectSession::class, 'category']);
     Route::get('/update-category/{id}', [App\Http\Controllers\Vendor\RedirectSession::class, 'update_category']);
+    Route::get('/all-product', [App\Http\Controllers\Vendor\RedirectSession::class, 'vendor_all_product']);
+    Route::get('/trush-product', [App\Http\Controllers\Vendor\RedirectSession::class, 'product_trush']);
 });
 
 Route::get('/', [App\Http\Controllers\Vendor\RedirectSession::class, 'index']);

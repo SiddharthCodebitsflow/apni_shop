@@ -47,5 +47,13 @@ Route::post('category-update',[App\Http\Controllers\Api\Vendor_category::class,'
 
 Route::post('add-new-product',[App\Http\Controllers\Api\Product::class,'insert_product']);
 
-Route::post('get-product',[App\Http\Controllers\Api\Product::class,'get_all_product_except_current_user']);
+Route::post('get-product',[App\Http\Controllers\Api\Product::class,'get_all_product_except_current_vendor']);
+
+Route::post('get-vendor-product',[App\Http\Controllers\Api\Product::class,'get_all_product_of_current_vendor']);
+
+Route::post('trush-product',[App\Http\Controllers\Api\Product::class,'get_trush_product']);
+
+Route::post('recover-product',[App\Http\Controllers\Api\Product::class,'recover_product']);
+
+Route::post('delete-product',[App\Http\Controllers\Api\Product::class,'delete_product']);
 

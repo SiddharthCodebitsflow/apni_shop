@@ -16,10 +16,9 @@
                     </h2>
                     <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <a href="#" class="nav-link sidebar-col rounded px-2 py-2 text-white">All Product</a>
+                            <a href="/all-product" class="nav-link sidebar-col rounded px-2 py-2 text-white">All Product</a>
                             <a href="/add-new-product" class="nav-link sidebar-col mt-1 rounded px-2 py-2 text-white">Add new</a>
                             <a href="/category" class="nav-link sidebar-col mt-1 rounded px-2 py-2 text-white">Cateogry</a>
-                            <a href="#" class="nav-link sidebar-col mt-1 rounded px-2 py-2 text-white">Tag</a>
                             <a href="/attributes" class="nav-link sidebar-col mt-1 rounded px-2 py-2 text-white">Attributes</a>
                         </div>
                     </div>
@@ -30,11 +29,23 @@
                             Order <strong class="w-100 text-end">></strong>
                         </button>
                     </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <a href="#" class="nav-link sidebar-col rounded px-2 py-2 text-white">All Order</a>
                             <a href="#" class="nav-link sidebar-col rounded px-2 mt-1 py-2 text-white">Customer</a>
                             <a href="#" class="nav-link sidebar-col rounded px-2 mt-1 py-2 text-white">status</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button text-white sidebar-col collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                            Settings<strong class="w-100 text-end">></strong>
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <a href="/trush-product" class="nav-link sidebar-col rounded px-2 py-2 text-white">Product Trush</a>
                         </div>
                     </div>
                 </div>

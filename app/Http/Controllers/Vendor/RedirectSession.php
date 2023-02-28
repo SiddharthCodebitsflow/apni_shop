@@ -89,4 +89,12 @@ class RedirectSession extends Controller
     {
        return view('vendor/edit_category')->with('cat_id',$id);
     }
+    public function vendor_all_product()
+    {
+        return view('vendor/vendor_all_product');
+    }
+    public function product_trush()
+    {
+        return view('vendor/product_trush');
+    }
 }
