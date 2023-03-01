@@ -96,7 +96,7 @@
                 <div class="row">
                     @foreach ($category as $category)
                     <div class="col-lg-5 mt-2 d-flex checkbox-block">
-                        <input class="form-check-input select-cat" type="checkbox" value="{{$category->cat_name}}" id="flexCheckDefault{{$category->id}}">
+                        <input class="form-check-input select-cat" type="checkbox" value="{{$category->cat_name}}" id="{{$category->id}}">
                         <label class="form-check-label" style="display: contents;" for="flexCheckDefault">{{$category->cat_name}}</label>
                     </div>
                     @endforeach
@@ -142,6 +142,7 @@
     var attr_array = {};
     var attribute = [];
     var category = [];
+    var category_id = [];
     $(document).ready(function() {
         $('.selected-option').change(function() {
             var id = jQuery(this).val();
@@ -175,15 +176,20 @@
 
         $('.select-cat').change(function() {
             let cat_value = jQuery(this).val();
+            let cat_id = $(this).attr('id');
             if ($(this).is(":checked")) {
                 index = category.indexOf(cat_value);
+                cat_index = category_id.indexOf(cat_id);
                 if (index == -1) {
                     category.push(cat_value);
+                    category_id.push(cat_id);
                 }
             } else {
                 index = category.indexOf(cat_value);
+                cat_index = category_id.indexOf(cat_id);
                 if (index > -1) {
                     category.splice(index, 1);
+                    category_id.splice(cat_index, 1);
                 }
             }
         });
@@ -193,6 +199,7 @@
             const newArr = property_array.map(function(arr_list) {
                 attribute = attribute.concat(arr_list);
             });
+            category_id=category_id.toString();
             category = category.toString();
             attribute = attribute.toString();
             let form = $('#product_form')[0];
@@ -207,6 +214,7 @@
             formData.append("session", session);
             formData.append("category", category);
             formData.append("attribute", attribute);
+            formData.append("category_id",category_id);
             $.ajax({
                 url: window.location.origin + '/api/add-new-product',
                 type: 'POST',

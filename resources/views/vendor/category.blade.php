@@ -115,7 +115,7 @@
             success: function(data) {
                 if (data.status == 200) {
                     for (var i in data.data) {
-                        $(".table_row").after('<tr class="text-center"><td>' + data.data[i].cat_name + '</td><td>' + data.data[i].cat_descreption + '</td><td><a href="">0</a></td><td><a class="btn sidebar-col text-white" href="update-category/' + data.data[i].id + '">Edit</a></td><td><button class="btn sidebar-col text-white" onclick="delete_att(' + data.data[i].id + ')" id="delete" value="' + data.data[i].id + '">Delete</button></td> </tr></tr>');
+                        $(".table_row").after('<tr class="text-center"><td>' + data.data[i].cat_name + '</td><td>' + data.data[i].cat_descreption + '</td><td><a href="">'+data.data[i].relationship_count+'</a></td><td><a class="btn sidebar-col text-white" href="update-category/' + data.data[i].id + '">Edit</a></td><td><button class="btn sidebar-col text-white" onclick="delete_att(' + data.data[i].id + ')" id="delete" value="' + data.data[i].id + '">Delete</button></td> </tr></tr>');
                     }
                 }
             }

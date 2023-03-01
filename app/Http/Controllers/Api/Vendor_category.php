@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Api\Category;
+use App\Models\Api\Relation_cat_product;
 use Illuminate\Http\Request;
 use Exception;
 
@@ -50,11 +51,13 @@ class Vendor_category extends Controller
             if ($request->validate([
                 'session' => 'required'
             ])) {
-                $category = Category::where('vendor_id', $request->session)->get();
+                $category = Category::with('relationship')->withCount('relationship')->where('vendor_id', $request->session)->get();
+                // dd($category[0]->relationship());
+                // dd($category);
                 return response()->json([
                     'status' => 200,
                     'error' => false,
-                    'data'=>$category,
+                    'data' => $category,
                 ]);
             } else {
                 throw new Exception("You are not Login User");
@@ -64,7 +67,7 @@ class Vendor_category extends Controller
                 'status' => 403,
                 'error' => true,
                 'message' => "please fill correct information",
-                'messages' => $e.''
+                'messages' => $e . ''
             ]);
         }
     }
@@ -93,14 +96,14 @@ class Vendor_category extends Controller
             ]);
         }
     }
-    
+
     public function get_single_category(Request $request)
     {
         try {
             if ($request->validate([
                 'cat_id' => 'required'
             ])) {
-                 
+
                 $cat_data = Category::where('id', $request->cat_id)->first();
                 return response()->json([
                     'status' => 200,

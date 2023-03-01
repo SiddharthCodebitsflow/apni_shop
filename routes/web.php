@@ -23,7 +23,7 @@ Route::middleware(['vendor_auth'])->group(function () {
     Route::get('/category', [App\Http\Controllers\Vendor\RedirectSession::class, 'category']);
     Route::get('/update-category/{id}', [App\Http\Controllers\Vendor\RedirectSession::class, 'update_category']);
     Route::get('/all-product', [App\Http\Controllers\Vendor\RedirectSession::class, 'vendor_all_product']);
-    Route::get('/trush-product', [App\Http\Controllers\Vendor\RedirectSession::class, 'product_trush']);
+    Route::get('/tresh-product', [App\Http\Controllers\Vendor\RedirectSession::class, 'product_tresh']);
 });
 
 Route::get('/', [App\Http\Controllers\Vendor\RedirectSession::class, 'index']);

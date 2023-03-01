@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
 Route::post('register',[App\Http\Controllers\Api\User_registration::class,'vendor_register']);
 
 Route::post('vendor-login',[App\Http\Controllers\Api\User_registration::class,'vendor_login']);
@@ -51,9 +50,12 @@ Route::post('get-product',[App\Http\Controllers\Api\Product::class,'get_all_prod
 
 Route::post('get-vendor-product',[App\Http\Controllers\Api\Product::class,'get_all_product_of_current_vendor']);
 
-Route::post('trush-product',[App\Http\Controllers\Api\Product::class,'get_trush_product']);
+Route::post('tresh-product',[App\Http\Controllers\Api\Product::class,'get_tresh_product']);
 
 Route::post('recover-product',[App\Http\Controllers\Api\Product::class,'recover_product']);
 
 Route::post('delete-product',[App\Http\Controllers\Api\Product::class,'delete_product']);
 
+Route::post('delete-product-permanently',[App\Http\Controllers\Api\Product::class,'delete_product_permanently']);
+
+Route::post('add-to-cart',[App\Http\Controllers\Api\Product::class,'add_to_cart']);

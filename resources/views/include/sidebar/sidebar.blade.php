@@ -1,7 +1,7 @@
 @include('../include/header/header')
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3  border-end">
+        <div class="col-lg-3 d-lg-block d-none border-end">
             <div class="accordion px-2" id="accordionExample">
                 <div class="accordion-item mt-5">
                     <h2 class="accordion-header " id="headingOne">
@@ -45,7 +45,7 @@
                     </h2>
                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <a href="/trush-product" class="nav-link sidebar-col rounded px-2 py-2 text-white">Product Trush</a>
+                            <a href="/tresh-product" class="nav-link sidebar-col rounded px-2 py-2 text-white">Product Tresh</a>
                         </div>
                     </div>
                 </div>
@@ -53,17 +53,5 @@
             </div>
         </div>
         <div class="col-lg-9 p-0">
-            <nav class="navbar sidebar-col ">
-                <div class="container-fluid">
-
-                    <div class="input-group w-75">
-                        <input type="text" class="form-control" placeholder="Search your products" aria-label="Search Your Product" aria-describedby="button-addon2">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
-                    </div>
-                    <div>
-                        <a class="btn btn-outline-secondary" href="logout">Logout</a>
-
-                    </div>
-                </div>
-            </nav>
+            @include('include/navbar/nav')
             <div class="container-fluid">

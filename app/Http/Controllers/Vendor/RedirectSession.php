@@ -93,8 +93,8 @@ class RedirectSession extends Controller
     {
         return view('vendor/vendor_all_product');
     }
-    public function product_trush()
+    public function product_tresh()
     {
-        return view('vendor/product_trush');
+        return view('vendor/product_tresh');
     }
 }
