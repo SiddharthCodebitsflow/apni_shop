@@ -97,4 +97,12 @@ class RedirectSession extends Controller
     {
         return view('vendor/product_tresh');
     }
+    public function add_to_cart()
+    {
+        return view('vendor/add_to_cart');
+    }
+    public function about_product($id)
+    {
+        return view('vendor/about_product')->with('prodcut_id',$id);
+    }
 }

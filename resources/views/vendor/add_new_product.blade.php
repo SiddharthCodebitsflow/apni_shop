@@ -85,7 +85,6 @@
                             </div>
                         </div>
                     </div>
-
                     @endforeach
                 </div>
                 <div class="select-value"></div>
@@ -171,7 +170,6 @@
                 $('.selected-checkbox' + id).prop('checked', false);
                 delete attr_array['title' + id];
             }
-            // console.log(attr_array);
         });
 
         $('.select-cat').change(function() {

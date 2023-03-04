@@ -81,7 +81,8 @@ class Product extends Controller
     {
         try {
             if ($request->validate(['session' => 'required'])) {
-                $fetch = Products::where('vendor_id', '!=', $request->session)->where('trush_status', 1)->orderBy("id", "desc")->get();
+                $fetch = Products::where('vendor_id', '!=', $request->session)->with('relationship')->where('trush_status', 1)->orderBy("id", "desc")->get();
+                // $cart_fetch=Vendor_cart::where(['vendor_id',$request->session])->get();
                 return response()->json([
                     'status' => 200,
                     'data' => $fetch
@@ -240,9 +241,9 @@ class Product extends Controller
                 'session' => 'required',
                 'product_id' => 'required'
             ])) {
-                $cart_register=new Vendor_cart();
-                $cart_register->vendor_id=$request->session;
-                $cart_register->product_id=$request->product_id;
+                $cart_register = new Vendor_cart();
+                $cart_register->vendor_id = $request->session;
+                $cart_register->product_id = $request->product_id;
                 $cart_register->save();
                 return response()->json([
                     'status' => 200,
@@ -257,7 +258,54 @@ class Product extends Controller
                 'status' => 400,
                 'error' => $e . '',
                 'message' => 'unavalable product',
-                'messages'=>$e.''
+                'messages' => $e . ''
+            ]);
+        }
+    }
+
+    public function vendor_cart_product(Request $request)
+    {
+        try {
+            if ($request->validate(['session' => 'required'])) {
+                $product_cart = Vendor_cart::where('vendor_id', $request->session)->with('relationship')->get();
+                $count = count($product_cart);
+                return response()->json([
+                    'status' => 200,
+                    'error' => false,
+                    'count' => $count,
+                    'data' => $product_cart,
+                ]);
+            } else {
+                throw new Exception('vendor not login');
+            }
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 400,
+                'error' => $e . '',
+                'message' => 'unavalable product',
+                'messages' => $e . ''
+            ]);
+        }
+    }
+
+    public function remove_product_from_cart(Request $request)
+    {
+        try {
+            if ($request->validate(['cart_id' => 'required'])) {
+                Vendor_cart::where('id', $request->cart_id)->delete();
+                return response()->json([
+                    'status' => 200,
+                    'error' => false,
+                ]);
+            } else {
+                throw new Exception('id not present');
+            }
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 400,
+                'error' => $e . '',
+                'message' => 'unavalable product',
+                'messages' => $e . ''
             ]);
         }
     }

@@ -24,6 +24,7 @@ Route::post('vendor-login',[App\Http\Controllers\Api\User_registration::class,'v
 
 Route::post('forget-password',[App\Http\Controllers\Api\User_registration::class,'forget_password']);
 
+
 Route::post('attribute',[App\Http\Controllers\Api\Vendor_attribute::class,'attribute']);
 
 Route::post('get-attribute',[App\Http\Controllers\Api\Vendor_attribute::class,'get_attribute']);
@@ -59,3 +60,7 @@ Route::post('delete-product',[App\Http\Controllers\Api\Product::class,'delete_pr
 Route::post('delete-product-permanently',[App\Http\Controllers\Api\Product::class,'delete_product_permanently']);
 
 Route::post('add-to-cart',[App\Http\Controllers\Api\Product::class,'add_to_cart']);
+
+Route::post('vendor-cart',[App\Http\Controllers\Api\Product::class,'vendor_cart_product']);
+
+Route::post('remove-cart',[App\Http\Controllers\Api\Product::class,'remove_product_from_cart']);

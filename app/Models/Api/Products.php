@@ -14,4 +14,8 @@ class Products extends Model
         'updated_at',
         'vendor_id'
     ];
+    public function relationship()
+    {
+        return $this->hasMany(Vendor_cart::class,'product_id');
+    }
 }

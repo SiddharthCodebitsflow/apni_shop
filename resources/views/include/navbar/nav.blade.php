@@ -7,15 +7,13 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto w-100 mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active text-white" aria-current="page" href="/home">Home</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white position-relative" href="#"> Cart
-                            <span class="position-absolute top-1 start-100 translate-middle badge rounded-circle bg-danger">
-                                99+
-                                <span class="visually-hidden">unread messages</span>
-                            </span></a>
+                    <a class="nav-link text-white position-relative" href="/vendor-cart"> Cart
+                        <span class="position-absolute top-1 start-100 translate-middle badge rounded-circle bg-danger card-badge">
+                        </span></a>
                 </li>
                 <li class="nav-item dropdown d-lg-none d-sm-block">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -70,7 +68,7 @@
                 <button class="btn btn-outline-white text-white">Search</button>
             </form>
             <div>
-                <a class="btn bg-custome text-white btn-outline-white mx-lg-3 my-md-2 " href="logout">Logout</a>
+                <a class="btn bg-custome text-white btn-outline-white mx-lg-3 my-2 " href="logout">Logout</a>
             </div>
         </div>
     </div>
