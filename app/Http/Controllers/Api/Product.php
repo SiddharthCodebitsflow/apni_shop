@@ -32,6 +32,7 @@ class Product extends Controller
                 if ($request->file('product_image')->isValid()) {
                     $file = $request->file('product_image');
                     $fileName = 'product/' . $file->getClientOriginalName();
+                    // dd($request->attribute);
                     $file->move(public_path('product/'), $file->getClientOriginalName());
                     $register = new Products();
                     $register->product_name = $request->product_name;
@@ -299,6 +300,29 @@ class Product extends Controller
                 ]);
             } else {
                 throw new Exception('id not present');
+            }
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 400,
+                'error' => $e . '',
+                'message' => 'unavalable product',
+                'messages' => $e . ''
+            ]);
+        }
+    }
+
+    public function get_single_product(Request $request)
+    {
+        try {
+            if ($request->validate(['product_id' => 'required'])) {
+                $product_info = Products::where(['id' => $request->product_id, 'trush_status' => 1])->get();
+                return response()->json([
+                    'status' => 200,
+                    'error' => false,
+                    'data' => $product_info
+                ]);
+            } else {
+                throw new Exception('Unavalable product');
             }
         } catch (Exception $e) {
             return response()->json([

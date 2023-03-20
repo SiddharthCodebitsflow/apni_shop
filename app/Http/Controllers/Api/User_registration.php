@@ -23,7 +23,6 @@ class User_registration extends Controller
                     $file = $request->file('shop_image');
                     $fileName = 'uploads/' . $file->getClientOriginalName();
                     $file->move(public_path('uploads/'), $file->getClientOriginalName());
-
                     $register = new Register();
                     $register->name = $request->Name;
                     $register->email = $request->Email;

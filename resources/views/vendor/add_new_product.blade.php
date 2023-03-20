@@ -59,7 +59,7 @@
                     @foreach ($attribute as $attribute)
                     <div class="col-lg-5 mt-2 d-flex checkbox-block">
                         <input class="form-check-input selected-option" type="checkbox" value="{{$attribute->id}}" id="checkbox{{$attribute->id}}">
-                        <label class="form-check-label" for="checkbox">{{$attribute->attribute_name}}</label>
+                        <label class="form-check-label" value="{{$attribute->attribute_name}}" id="lable{{$attribute->id}}" for="checkbox">{{$attribute->attribute_name}}</label>
                     </div>
                     <div class="modal" id="exampleModal{{$attribute->id}}" tabindex="-1">
                         <div class="modal-dialog">
@@ -145,6 +145,7 @@
     $(document).ready(function() {
         $('.selected-option').change(function() {
             var id = jQuery(this).val();
+            let attribute_name = $('#lable' + id).attr('value');
             if ($(this).is(":checked")) {
                 let temp_arr = [];
                 $('#exampleModal' + id).modal('show');
@@ -164,11 +165,11 @@
                             temp_arr.splice(index, 1);
                         }
                     }
-                    attr_array['title' + id] = temp_arr;
+                    attr_array[attribute_name] = temp_arr.toString();
                 });
             } else {
                 $('.selected-checkbox' + id).prop('checked', false);
-                delete attr_array['title' + id];
+                delete attr_array[attribute_name];
             }
         });
 
@@ -193,13 +194,16 @@
         });
 
         $('#submit_form').click(function() {
-            const property_array = Object.values(attr_array);
-            const newArr = property_array.map(function(arr_list) {
-                attribute = attribute.concat(arr_list);
-            });
-            category_id=category_id.toString();
+            // const property_array = Object.values(attr_array);
+            // const newArr = property_array.map(function(arr_list) {
+            //     attribute = attribute.concat(arr_list);
+            // });
+            category_id = category_id.toString();
             category = category.toString();
-            attribute = attribute.toString();
+            // attribute = attribute.toString();
+            attribute = JSON.stringify(attr_array);
+            console.log(attr_array);
+
             let form = $('#product_form')[0];
             var formData = new FormData(form);
             let product_name = $('#productName').val();
@@ -212,7 +216,7 @@
             formData.append("session", session);
             formData.append("category", category);
             formData.append("attribute", attribute);
-            formData.append("category_id",category_id);
+            formData.append("category_id", category_id);
             $.ajax({
                 url: window.location.origin + '/api/add-new-product',
                 type: 'POST',

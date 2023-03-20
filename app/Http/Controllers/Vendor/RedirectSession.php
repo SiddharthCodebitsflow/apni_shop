@@ -103,6 +103,6 @@ class RedirectSession extends Controller
     }
     public function about_product($id)
     {
-        return view('vendor/about_product')->with('prodcut_id',$id);
+        return view('vendor/about_product')->with('product_id',$id);
     }
 }
