@@ -315,7 +315,7 @@ class Product extends Controller
     {
         try {
             if ($request->validate(['product_id' => 'required'])) {
-                $product_info = Products::where(['id' => $request->product_id, 'trush_status' => 1])->get();
+                $product_info = Products::where(['id' => $request->product_id, 'trush_status' => 1])->with('relationship')->get();
                 return response()->json([
                     'status' => 200,
                     'error' => false,

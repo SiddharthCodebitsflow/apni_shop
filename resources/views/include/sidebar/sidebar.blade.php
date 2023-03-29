@@ -44,7 +44,9 @@
                         </button>
                     </h2>
                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+
                         <div class="accordion-body">
+                            <a href="/profile" class="nav-link sidebar-col rounded px-2 py-2 mb-2 text-white">Profile</a>
                             <a href="/tresh-product" class="nav-link sidebar-col rounded px-2 py-2 text-white">Product Tresh</a>
                         </div>
                     </div>

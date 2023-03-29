@@ -18,9 +18,10 @@ class User_registration extends Controller
             if ($request->validate([
                 'Name' => 'required', 'Email' => 'required', 'Contact' => 'required',
                 'Shop_id' => 'required', 'Address' => 'required', 'password' => 'required',
+                'Upi'=>'required'
             ])) {
-                if ($request->file('shop_image')->isValid()) {
-                    $file = $request->file('shop_image');
+                if ($request->file('profile')->isValid()) {
+                    $file = $request->file('profile');
                     $fileName = 'uploads/' . $file->getClientOriginalName();
                     $file->move(public_path('uploads/'), $file->getClientOriginalName());
                     $register = new Register();
@@ -31,6 +32,7 @@ class User_registration extends Controller
                     $register->address = $request->Address;
                     $register->shop_image = $fileName;
                     $register->password = Hash::make($request->password);
+                    $register->upi=$request->Upi;
                     $register->status = 0;
                     $register->save();
                     return response()->json([
@@ -65,7 +67,6 @@ class User_registration extends Controller
             if (Auth::attempt(['email' => $request->Email, 'password' => $request->password, 'shop_id' => $request->Shop_id])) {
                 $user = Auth::user();
                 if ($user->status == 0) {
-
                     return response()->json([
                         'status' => 401,
                         'error' => true,
@@ -125,6 +126,31 @@ class User_registration extends Controller
                 }
             } else {
                 throw new Exception("Please fill correct information");
+            }
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => true,
+                'status' => 400,
+                'message' => 'The given data was invalid',
+                'success' => $e . ''
+            ]);
+        }
+    }
+
+    public function vendor_profile_details(Request $request)
+    {
+        try {
+            if ($request->validate([
+                'session_id' => 'required'
+            ])) {
+                $user = User::find($request->session_id);
+                return response()->json([
+                    'error' => false,
+                    'status' => 200,
+                    'data' => $user,
+                ]);
+            } else {
+                throw new Exception('session is required');
             }
         } catch (Exception $e) {
             return response()->json([

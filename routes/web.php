@@ -26,6 +26,7 @@ Route::middleware(['vendor_auth'])->group(function () {
     Route::get('/tresh-product', [App\Http\Controllers\Vendor\RedirectSession::class, 'product_tresh']);
     Route::get('/vendor-cart', [App\Http\Controllers\Vendor\RedirectSession::class, 'add_to_cart']);
     Route::get('/about-product/{id}', [App\Http\Controllers\Vendor\RedirectSession::class, 'about_product']);
+    Route::get('/profile', [App\Http\Controllers\Vendor\RedirectSession::class, 'profile']);
 });
 
 Route::get('/', [App\Http\Controllers\Vendor\RedirectSession::class, 'index']);
@@ -38,7 +39,7 @@ Route::get('login', [App\Http\Controllers\Vendor\RedirectSession::class, 'login'
 
 Route::get('forget-password', [App\Http\Controllers\Vendor\RedirectSession::class, 'forget_password']);
 
+Route::get('user-home', [App\Http\Controllers\User\Redirect::class, 'home']);
 
-Route::get('user/user-register', function () {
-    return view('user/user_register');
-});
+Route::get('/user-about-product/{id}', [App\Http\Controllers\User\Redirect::class, 'product_about']);
+

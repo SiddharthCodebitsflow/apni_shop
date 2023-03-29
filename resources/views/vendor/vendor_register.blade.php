@@ -29,13 +29,17 @@
                         <p id="addressError" class="text-danger"></p>
                     </div>
                     <div class="form-grouup my-2">
+                        <input type="text" id="Upi" class="form-control" onkeyup="$('#upiError').html(' ')" name="Upi" placeholder="Enter Your Upi Id">
+                        <p id="upiError" class="text-danger"></p>
+                    </div>
+                    <div class="form-grouup my-2">
                         <input type="password" id="password" class="form-control" onkeyup="$('#passwordError').html(' ')" name="password" placeholder="Enter the Password">
                         @csrf
                         <p id="passwordError" class="text-danger"></p>
                     </div>
                     <div class="form-grouup my-2">
-                        <label for="">Choose Shop Image</label>
-                        <input type="file" id="shop_image" class="form-control" name="shop_image" required>
+                        <label for="">Choose Profile Image</label>
+                        <input type="file" id="profile" class="form-control" name="profile" required>
                     </div>
 
                     <div class="form-grouup my-2">
@@ -64,8 +68,12 @@
         var shop_id = $('#Shop_id').val();
         var address = $('#Address').val();
         var password = $('#password').val();
+        var upi=$('#Upi').val();
         if (name.length == 0) {
             $('#nameError').html("*Plese Enter your Name");
+        }
+        if (upi.length == 0) {
+            $('#upiError').html("*Plese Enter your Correct Upi");
         }
         if (contact.length == 0 || contact.length < 10 || contact.length > 10) {
             $('#contactError').html("*Plese Enter your correct mobile number");
@@ -86,7 +94,7 @@
         if (name.length != 0 && contact.length == 10 && password.length != 0 && email.length != 0 && shop_id != 0 && address.length != 0) {
             var form = $('#contact_form')[0];
             var formData = new FormData(form);
-            // console.log(formData);
+            console.log(formData);
             $.ajax({
                 url: window.location.origin + '/api/register',
                 type: 'POST',

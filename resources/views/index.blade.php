@@ -8,7 +8,7 @@
                 <h1 class="fst-italic">Are you vendor or User </h1>
                 <div class="my-5">
                     <div class="my-5">
-                        <a class="bg-custome  btn text-white w-50 rounded-pill" href="{{'user/user-register'}}">Use For User</a>
+                        <a class="bg-custome  btn text-white w-50 rounded-pill" href="{{'user-home'}}">Use For User</a>
                     </div>
                     <div>
                         <a class="bg-custome  btn text-white w-50 rounded-pill text-bold" href="{{'vendor-register'}}">Use For Vendor</a>
@@ -21,7 +21,7 @@
                 <h1 class="fst-italic">Are you vendor or User </h1>
                 <div class="my-5">
                     <div class="my-5">
-                        <a class="bg-custome  btn text-white w-50 rounded-pill" href="{{'user/user-register'}}">Use For User</a>
+                        <a class="bg-custome  btn text-white w-50 rounded-pill" href="{{'user-home'}}">Use For User</a>
                     </div>
                     <div>
                         <a class="bg-custome  btn text-white w-50 rounded-pill text-bold" href="{{'vendor-register'}}">Use For Vendor</a>

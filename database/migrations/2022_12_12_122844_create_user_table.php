@@ -22,6 +22,7 @@ class CreateUserTable extends Migration
             $table->text('address');
             $table->string('password');
             $table->text('shop_image');
+            $table->text('upi');
             $table->integer('status');
             // $table->integer('login');
             $table->timestamps();

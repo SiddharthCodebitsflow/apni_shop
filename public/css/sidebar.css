@@ -269,3 +269,36 @@ select[data-multi-select-plugin] {
     height: 620px;
     filter: brightness(0.5);
 }
+
+
+.containera {
+    height: 50px;
+    width: 50px;
+    margin-left: 4%;
+    margin-right: 2%;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 25px rgba(17, 1, 68, 0.08);
+    position: relative;
+    cursor: pointer;
+  }
+  
+  input[name="type"] {
+    position: absolute;
+    width: 100%;
+    cursor: pointer;
+  }
+  
+  input.colour_checkBox {
+    height: 38px;
+    width: 38px;
+    margin-left: -6px;
+    display: flex;
+    border-radius: 100%;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    opacity: 0.5;
+  }
+
+  

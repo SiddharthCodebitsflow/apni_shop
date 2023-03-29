@@ -105,4 +105,8 @@ class RedirectSession extends Controller
     {
         return view('vendor/about_product')->with('product_id',$id);
     }
+    public function profile()
+    {
+        return view('vendor/profile');
+    }
 }

@@ -1,14 +1,10 @@
-@include('../include/sidebar/sidebar')
+@include('../user_include/header/user_header')
+
 <div class="container">
-    <div class="row product-box">
-
-    </div>
-
-    <div class="row add-info">
-
+    <div class="row product-box mb-4">
     </div>
 </div>
-@include('../include/footer/footer')
+@include('../user_include/footer/user_footer')
 
 <script>
     $(window).on("load", function() {
@@ -110,13 +106,13 @@
                             <span style="position:absolute;"></span>
                             <input class="form-check-input colour_checkBox select_option" value="" id="checkBox" type="checkbox">
                             </div>`);
-                        }
+                        }                        
 
                     }
-                    if(key=='size' || key=='Size'){
+                    if (key == 'size' || key == 'Size') {
                         let size_variation = value.split(',');
                         for (size_variation of size_variation) {
-                        $('.class-option').append(`<option>${size_variation}</option>`);
+                            $('.class-option').append(`<option>${size_variation}</option>`);
                         }
                     }
                 })
@@ -126,19 +122,5 @@
         })
     });
 
-    function add_to_cart(product_id) {
-        var session_id = "{{session('user_id')}}";
-        $.ajax({
-            url: window.location.origin + '/api/add-to-cart',
-            type: 'POST',
-            dataType: 'json',
-            data: {
-                session: session_id,
-                product_id: product_id
-            },
-            success: function(data) {
-                location.reload();
-            }
-        })
-    }
+
 </script>

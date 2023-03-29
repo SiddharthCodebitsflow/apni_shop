@@ -66,3 +66,7 @@ Route::post('vendor-cart',[App\Http\Controllers\Api\Product::class,'vendor_cart_
 Route::post('remove-cart',[App\Http\Controllers\Api\Product::class,'remove_product_from_cart']);
 
 Route::post('get-single-product',[App\Http\Controllers\Api\Product::class,'get_single_product']);
+
+Route::post('profile-details',[App\Http\Controllers\Api\User_registration::class,'vendor_profile_details']);
+
+Route::post('user-product',[App\Http\Controllers\User_Api\Product::class,'get_product']);
