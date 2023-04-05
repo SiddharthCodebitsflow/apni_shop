@@ -43,3 +43,13 @@ Route::get('user-home', [App\Http\Controllers\User\Redirect::class, 'home']);
 
 Route::get('/user-about-product/{id}', [App\Http\Controllers\User\Redirect::class, 'product_about']);
 
+Route::get('user-register',[App\Http\Controllers\User\Redirect::class,'user_register']);
+
+Route::get('user-login',[App\Http\Controllers\User\Redirect::class,'user_login']);
+
+Route::post('user-session',[App\Http\Controllers\User\Redirect::class,'user_session']);
+
+Route::get('user-logout',[App\Http\Controllers\User\Redirect::class,'user_logout']);
+
+// Route::get('/add-cart/{id}/{qty}', [App\Http\Controllers\User\Redirect::class, 'add_to_cart_cookie']);
+

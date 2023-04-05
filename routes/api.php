@@ -70,3 +70,7 @@ Route::post('get-single-product',[App\Http\Controllers\Api\Product::class,'get_s
 Route::post('profile-details',[App\Http\Controllers\Api\User_registration::class,'vendor_profile_details']);
 
 Route::post('user-product',[App\Http\Controllers\User_Api\Product::class,'get_product']);
+
+Route::post('user-register',[App\Http\Controllers\User_Api\User_data::class,'user_register']);
+
+Route::post('user-login',[App\Http\Controllers\User_Api\User_data::class,'user_login']);

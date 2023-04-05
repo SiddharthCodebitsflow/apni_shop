@@ -1,0 +1,1 @@
+setcookie('user', $data['userid'], time() + 86400, '/');
