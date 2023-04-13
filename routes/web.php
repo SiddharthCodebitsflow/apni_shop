@@ -51,5 +51,7 @@ Route::post('user-session',[App\Http\Controllers\User\Redirect::class,'user_sess
 
 Route::get('user-logout',[App\Http\Controllers\User\Redirect::class,'user_logout']);
 
+Route::get('user-cart',[App\Http\Controllers\User\Redirect::class,'user_cart'])->middleware('user_login');
+
 // Route::get('/add-cart/{id}/{qty}', [App\Http\Controllers\User\Redirect::class, 'add_to_cart_cookie']);
 

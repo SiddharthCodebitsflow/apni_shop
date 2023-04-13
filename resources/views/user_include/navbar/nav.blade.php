@@ -12,7 +12,7 @@
                 </li>
                 @if (session()->has('login_id'))
                     <li class="nav-item">
-                        <a class="nav-link text-white position-relative" href="/vendor-cart"> Cart
+                        <a class="nav-link text-white position-relative" href="/user-cart"> Cart
                             <span
                                 class="position-absolute top-1 start-100 translate-middle badge rounded-circle bg-danger card-badge">
                             </span></a>

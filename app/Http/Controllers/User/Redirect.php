@@ -26,7 +26,7 @@ class Redirect extends Controller
             return redirect('user-home');
         }
     }
-
+    
     public function user_register()
     {
         if (session('login_id')) {
@@ -57,6 +57,10 @@ class Redirect extends Controller
                 'status' => 400,
             ]);
         }
+    }
+    public function user_cart()
+    {
+        return view('user/user_cart');
     }
 
     // public function add_to_cart_cookie(Request $request, $id, $qty)

@@ -74,3 +74,13 @@ Route::post('user-product',[App\Http\Controllers\User_Api\Product::class,'get_pr
 Route::post('user-register',[App\Http\Controllers\User_Api\User_data::class,'user_register']);
 
 Route::post('user-login',[App\Http\Controllers\User_Api\User_data::class,'user_login']);
+
+Route::post('add-user-cart',[App\Http\Controllers\User_Api\Product::class,'add_to_cart']);
+
+Route::post('count-user-cart',[App\Http\Controllers\User_Api\Product::class,'user_cart_count']);
+
+Route::post('get-single-user-product',[App\Http\Controllers\User_Api\Product::class,'get_single_product']);
+
+Route::post('get-user-cart',[App\Http\Controllers\User_Api\Product::class,'get_user_cart']);
+
+Route::post('delete-user-cart',[App\Http\Controllers\User_Api\Product::class,'cart_delete']);

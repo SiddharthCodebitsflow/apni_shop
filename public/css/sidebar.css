@@ -301,4 +301,6 @@ select[data-multi-select-plugin] {
     opacity: 0.5;
   }
 
-  
+  .product-edit-field{
+    width: 150px;
+  }

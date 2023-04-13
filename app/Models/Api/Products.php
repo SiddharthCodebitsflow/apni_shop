@@ -2,6 +2,7 @@
 
 namespace App\Models\Api;
 
+use App\Models\User_Api\User_cart;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,5 +18,9 @@ class Products extends Model
     public function relationship()
     {
         return $this->hasMany(Vendor_cart::class,'product_id');
+    }
+    public function user_relationship()
+    {
+        return $this->hasMany(User_cart::class,'product_id');
     }
 }

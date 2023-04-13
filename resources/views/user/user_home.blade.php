@@ -15,7 +15,6 @@
             type: 'POST',
             dataType: 'json',
             success: function(data) {
-                console.log(data);
                 if (data.status == 200) {
                     for (var i in data.data) {
                         $('.card-box').append(
