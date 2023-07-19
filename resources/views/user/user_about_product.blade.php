@@ -7,7 +7,11 @@
 <div class="container">
     <div class="row product-box mb-4">
     </div>
+    <div class="row add-info mb-5">
+
+    </div>
 </div>
+
 @include('../user_include/footer/user_footer')
 
 <script>
@@ -53,7 +57,7 @@
                                 </div>
                                 <div class="my-4">
                                 <button class="btn bg-custome text-white mt-1" onclick="add_to_cart(' ${product_id} ')" >Add to Cart</button>
-                                    <button class="btn bg-custome mx-lg-4 my-2 text-white">Process to Checkout</button>
+                                   
                                 </div>
                             </div>
                         </div>
@@ -81,7 +85,7 @@
                                         <label class="h6" for="">Quantity</label>
                                     </div>
                                     <div>
-                                        <input min="1" value="1" class="text-center form-control w-50" type="number">
+                                        <input min="1" value="1" class="text-center  qty form-control w-50" type="number">
                                     </div>
                                     <div class="mt-3 size-class">
                                         <lable class="h5">Size: </lable>
@@ -90,8 +94,8 @@
                                         </select>
                                     </div>
                                     <div class="my-4">
-                                    <a class="btn btn-outline-success mt-1" href="/user-cart" >View Cart</a>
-                                        <button class="btn bg-custome mx-lg-4 my-2 text-white">Process to Checkout</button>
+                                <button class="btn bg-custome text-white mt-1" onclick="add_to_cart(' ${product_id} ')" >Add to Cart</button>
+                                    <a class="btn btn-outline-success mx-lg-2 mt-1" href="/user-cart" >View Cart</a>
                                     </div>
                                 </div>
                             </div>
@@ -144,7 +148,7 @@
             data: {
                 user_id: user_id,
                 product_id: product_id,
-                qty:qty
+                qty: qty
             },
             success: function(data) {
                 location.reload();

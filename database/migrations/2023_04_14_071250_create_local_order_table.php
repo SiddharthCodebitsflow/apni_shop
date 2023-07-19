@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserCartTable extends Migration
+class CreateLocalOrderTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,24 @@ class CreateUserCartTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_cart', function (Blueprint $table) {
+        Schema::create('local_order', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('user_register');
+            $table->text('name');
+            $table->text('email');
+            $table->text('contact');
+            $table->text('address');
+            $table->text('postcode');
+            $table->text('country');
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('product');
-            $table->unsignedBigInteger('qty');
+            $table->text('Payment_type');
+            $table->text('attribute')->nullable();
+            $table->text('total_price');
+            $table->text('qty');
+            $table->text('addition_information');
+            $table->text('confirm_status');
             $table->timestamps();
         });
     }
@@ -31,6 +42,6 @@ class CreateUserCartTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_cart');
+        Schema::dropIfExists('local_order');
     }
 }

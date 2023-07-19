@@ -12,7 +12,7 @@
     <script src="https://kit.fontawesome.com/b7ccdde283.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class="background">
 @include('../user_include/navbar/nav')
 
 <div class="container-flude mx-4">

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/css/sidebar.css">
 </head>
 
-<body>
+<body class="bg-dark text-white">
 
 
 

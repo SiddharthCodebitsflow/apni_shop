@@ -84,3 +84,13 @@ Route::post('get-single-user-product',[App\Http\Controllers\User_Api\Product::cl
 Route::post('get-user-cart',[App\Http\Controllers\User_Api\Product::class,'get_user_cart']);
 
 Route::post('delete-user-cart',[App\Http\Controllers\User_Api\Product::class,'cart_delete']);
+
+Route::post('user-order',[App\Http\Controllers\User_Api\Product::class,'local_order']);
+
+Route::post('order-checkout',[App\Http\Controllers\User_Api\Product::class,'get_checkout']);
+
+Route::post('get-order',[App\Http\Controllers\Api\Product::class,'get_checkout']);
+
+Route::post('accept-order',[App\Http\Controllers\Api\Product::class,'order_accept']);
+
+Route::post('reject-order',[App\Http\Controllers\Api\Product::class,'order_reject']);

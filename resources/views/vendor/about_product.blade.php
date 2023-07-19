@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="my-4">
                                 <button class="btn bg-custome text-white mt-1" onclick="add_to_cart(' ${product_id} ')" >Add to Cart</button>
-                                    <button class="btn bg-custome mx-lg-4 my-2 text-white">Process to Checkout</button>
+                                 
                                 </div>
                             </div>
                         </div>
@@ -91,7 +91,6 @@
                                     </div>
                                     <div class="my-4">
                                     <a class="btn btn-outline-success mt-1" href="/vendor-cart" >View Cart</a>
-                                        <button class="btn bg-custome mx-lg-4 my-2 text-white">Process to Checkout</button>
                                     </div>
                                 </div>
                             </div>

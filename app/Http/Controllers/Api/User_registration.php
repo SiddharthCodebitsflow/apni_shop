@@ -18,7 +18,7 @@ class User_registration extends Controller
             if ($request->validate([
                 'Name' => 'required', 'Email' => 'required', 'Contact' => 'required',
                 'Shop_id' => 'required', 'Address' => 'required', 'password' => 'required',
-                'Upi'=>'required'
+                'Upi' => 'required'
             ])) {
                 if ($request->file('profile')->isValid()) {
                     $file = $request->file('profile');
@@ -32,8 +32,8 @@ class User_registration extends Controller
                     $register->address = $request->Address;
                     $register->shop_image = $fileName;
                     $register->password = Hash::make($request->password);
-                    $register->upi=$request->Upi;
-                    $register->status = 0;
+                    $register->upi = $request->Upi;
+                    $register->status = 1;
                     $register->save();
                     return response()->json([
                         'status' => 200,

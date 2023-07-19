@@ -8,23 +8,24 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto w-100 mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
+                    <a class="nav-link nav-btn active text-white" aria-current="page" href="/user-home">Home</a>
                 </li>
                 @if (session()->has('login_id'))
                     <li class="nav-item">
-                        <a class="nav-link text-white position-relative" href="/user-cart"> Cart
+                        <a class="nav-link nav-btn text-white position-relative" href="/user-cart"> Cart
                             <span
                                 class="position-absolute top-1 start-100 translate-middle badge rounded-circle bg-danger card-badge">
                             </span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active text-white" aria-current="page" href="#">Checkout</a>
+                        <a class="nav-link nav-btn active text-white" aria-current="page" href="order-checkout">Checkout</a>
                     </li>
                 @endif
             </ul>
-            <form class="d-flex w-100" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-white text-white">Search</button>
+            <form action="{{ route('search') }}" method="post" class="d-flex w-100" role="search">
+                <input class="form-control form-control1 me-2" type="search" name="search" placeholder="Search" aria-label="Search" required>
+                @csrf
+                <input type="submit" value="search" class="btn btn-outline-white text-white">
             </form>
             @if (session()->has('login_id'))
                 <div>

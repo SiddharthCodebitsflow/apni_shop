@@ -27,6 +27,7 @@ Route::middleware(['vendor_auth'])->group(function () {
     Route::get('/vendor-cart', [App\Http\Controllers\Vendor\RedirectSession::class, 'add_to_cart']);
     Route::get('/about-product/{id}', [App\Http\Controllers\Vendor\RedirectSession::class, 'about_product']);
     Route::get('/profile', [App\Http\Controllers\Vendor\RedirectSession::class, 'profile']);
+    Route::get('/all-order', [App\Http\Controllers\Vendor\RedirectSession::class, 'all_order']);
 });
 
 Route::get('/', [App\Http\Controllers\Vendor\RedirectSession::class, 'index']);
@@ -52,6 +53,12 @@ Route::post('user-session',[App\Http\Controllers\User\Redirect::class,'user_sess
 Route::get('user-logout',[App\Http\Controllers\User\Redirect::class,'user_logout']);
 
 Route::get('user-cart',[App\Http\Controllers\User\Redirect::class,'user_cart'])->middleware('user_login');
+
+Route::get('checkout/{id}',[App\Http\Controllers\User\Redirect::class,'process_to_checkout'])->middleware('user_login');
+
+Route::get('order-checkout',[App\Http\Controllers\User\Redirect::class,'checkout'])->middleware('user_login');
+
+Route::post('search',[App\Http\Controllers\User\Redirect::class,'search'])->name('search');
 
 // Route::get('/add-cart/{id}/{qty}', [App\Http\Controllers\User\Redirect::class, 'add_to_cart_cookie']);
 

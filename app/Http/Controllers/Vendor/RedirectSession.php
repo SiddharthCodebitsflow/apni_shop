@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\Api\Vendor_attribute;
+use App\Models\User;
 
 class RedirectSession extends Controller
 {
@@ -79,7 +80,7 @@ class RedirectSession extends Controller
     }
     public function update_attribute($id)
     {
-        return view('vendor/edit_attributes')->with('att_id',$id);
+        return view('vendor/edit_attributes')->with('att_id', $id);
     }
     public function category()
     {
@@ -87,7 +88,7 @@ class RedirectSession extends Controller
     }
     public function update_category($id)
     {
-       return view('vendor/edit_category')->with('cat_id',$id);
+        return view('vendor/edit_category')->with('cat_id', $id);
     }
     public function vendor_all_product()
     {
@@ -103,10 +104,16 @@ class RedirectSession extends Controller
     }
     public function about_product($id)
     {
-        return view('vendor/about_product')->with('product_id',$id);
+        return view('vendor/about_product')->with('product_id', $id);
     }
     public function profile()
     {
-        return view('vendor/profile');
+        $id = session('user_id');
+        $upi = User::where(['id' => $id])->get('upi');
+        return view('vendor/profile')->with(['upi_id' => $upi]);
+    }
+    public function all_order()
+    {
+        return view('vendor/all_order');
     }
 }

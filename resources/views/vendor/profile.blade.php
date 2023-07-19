@@ -1,5 +1,4 @@
 @include('../include/sidebar/sidebar')
-
 <div class="contaienr mt-3">
     <div class="card">
         <div class="card-body profile-detail">
@@ -13,7 +12,7 @@
                     Your Payment QR Code
                 </div>
                 <div class="card-body qr-code">
-                    {{QrCode::size(150)->generate('upi://pay?pa=&amp;pn=Siddharth; cu=INR') }}
+                    {{ QrCode::size(150)->generate("upi://pay?pa={$upi_id[0]->upi}&pn=Siddharth&cu=INR&am=100") }}
                 </div>
             </div>
         </div>
@@ -25,7 +24,7 @@
 
 <script>
     $(window).on("load", function() {
-        let session_id = "{{session('user_id')}}";
+        let session_id = "{{ session('user_id') }}";
         $.ajax({
             url: window.location.origin + '/api/profile-details',
             type: 'POST',
@@ -70,7 +69,6 @@
                     </div>
 
                 `);
-                const upi = 'upi://pay?pa=' + data.data.upi + '&amp;pn=Siddharth; cu=INR';
             }
         });
     });

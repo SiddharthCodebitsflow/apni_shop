@@ -4,7 +4,7 @@
     {{ request()->cookie('cart') }}
 @endif --}}
 
-<div class="row card-box mb-4">
+<div class="row card-box mb-4 ">
 </div>
 @include('../user_include/footer/user_footer')
 
@@ -18,7 +18,7 @@
                 if (data.status == 200) {
                     for (var i in data.data) {
                         $('.card-box').append(
-                            '<div class="col-md-3 col-sm-4 mt-4"><div class="card"><a href="/user-about-product/' +
+                            '<div class="col-md-3 col-sm-4 mt-4"><div class="card background"><a href="/user-about-product/' +
                             data.data[i].id + '"><img  src="' + data.data[i].product_image +
                             '" class="product-image card-img-top" alt=""></a><div class="card-body"> <h5 class="card-title">' +
                             data.data[i].product_name +

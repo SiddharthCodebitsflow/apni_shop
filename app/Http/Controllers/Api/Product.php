@@ -7,6 +7,7 @@ use App\Models\Api\Category;
 use App\Models\Api\Products;
 use App\Models\Api\Relation_cat_product;
 use App\Models\Api\Vendor_cart;
+use App\Models\User_Api\Order;
 use Exception;
 use Illuminate\Http\Request;
 use Image;
@@ -330,6 +331,64 @@ class Product extends Controller
                 'error' => $e . '',
                 'message' => 'unavalable product',
                 'messages' => $e . ''
+            ]);
+        }
+    }
+
+    public function get_checkout(Request $request)
+    {
+        try {
+            $checkout_data = Order::with('products_relation')->get();
+            return response()->json([
+                'status' => 200,
+                'error' => false,
+                'data' => $checkout_data
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 400,
+                'error' => true,
+                'message' => $e . ''
+            ]);
+        }
+    }
+    public function order_accept(Request $request)
+    {
+        try {
+            if ($request->validate(['order_id' => 'required'])) {
+                $checkout_data = Order::where(['id' => $request->order_id])->first();
+                $checkout_data->confirm_status = 1;
+                $checkout_data->save();
+                return response()->json([
+                    'status' => 200,
+                    'error' => false,
+                ]);
+            }
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 400,
+                'error' => true,
+                'message' => $e . ''
+            ]);
+        }
+    }
+    public function order_reject(Request $request)
+    {
+        try {
+            if ($request->validate(['order_id' => 'required'])) {
+                $checkout_data = Order::where(['id' => $request->order_id])->first();
+                $checkout_data->confirm_status = 2;
+                $checkout_data->save();
+                return response()->json([
+                    'status' => 200,
+                    'error' => false,
+                ]);
+            }
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 400,
+                'error' => true,
+                'message' => $e . ''
             ]);
         }
     }

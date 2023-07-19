@@ -1,7 +1,7 @@
 @include('../user_include/header/user_header')
 
 <div class="row my-4 overflow-auto">
-    <table class="table">
+    <table class="table background">
         <thead>
             <tr>
                 <th class="text-center" scope="col">Product Image</th>
@@ -9,30 +9,33 @@
                 <th class="text-center" scope="col">Price</th>
                 <th class="text-center" scope="col">Quantity</th>
                 <th class="text-center" scope="col">Sub Total</th>
+                <th class="text-center" scope="col">Checkout</th>
                 <th class="text-center" scope="col">Action</th>
             </tr>
         </thead>
         <tbody class="table-row">
         </tbody>
     </table>
-    <div class="card text-bg-light mb-3" style="max-width: 40rem;">
+    {{-- <div class="card text-bg-light mb-3" style="max-width: 40rem;">
         <div class="card-header text-custome">Process to Checkout</div>
         <div class="card-body">
             <p class="card-text text-custome ">Subtotal: <span class="total_price text-black ms-5"></span></p>
             <div class="text-custome">Shipping:</div>
             <div class="card-header">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="local_pickup" id="flexRadioDefault1" checked>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                     <label class="form-check-label" for="flexRadioDefault1">
                         Local pickup
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cash_on_delivery" id="flexRadioDefault2">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+                        checked>
                     <label class="form-check-label" for="flexRadioDefault2">
                         Cash On Delivery
                     </label>
                 </div>
+               
                 <div class="form-check">
                     <input class="form-check-input " type="radio" name="pay_to_online" id="flexRadioDefault3"
                         disabled>
@@ -41,25 +44,11 @@
                     </label>
                 </div>
             </div>
-
             <div>
-                <label for="" class="mt-3">Enter your Address for Delivery</label>
-                <input class="form-control my-2" type="text" placeholder="Address">
-            </div>
-            <div>
-                <label for="">Contact Number</label>
-                <input class="form-control my-2" type="text" placeholder="Contact Number">
-            </div>
-            <div>
-                <label for="">Enter the Addition Information for Customization in your
-                    products</label>
-                <textarea class="form-control mt-3"></textarea>
-            </div>
-            <div>
-                <button class="btn btn-outline-white text-white bg-custome w-100 my-3">Checkout</button>
+                <button id="checkout" class="btn btn-outline-white text-white bg-custome w-100 my-3">Checkout</button>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 @include('../user_include/footer/user_footer')
 
@@ -85,6 +74,7 @@
                                 <td class="text-center">${data.data[i].products_relation[0].sale_price}</td>
                                 <td class="product-edit-field"><input type="number" class="form-control text-center" min="1" value="${data.data[i].qty}"></td>
                                 <td class="text-center">${data.data[i].products_relation[0].sale_price*data.data[i].qty}</td>
+                                <td class="text-center"><a href="checkout/${data.data[i].products_relation[0].id}" class="btn btn-outline-white text-white bg-custome">Process to checkout</a></td>
                                 <td class="text-danger text-center"><i onclick="delete_data('${data.data[i].id}')" class="fa-solid fa-trash"></i></td>
                             </tr>
                       `);
@@ -92,10 +82,14 @@
                             data.data[i].qty;
                     }
                 }
-                $('.total_price').html("Rs: " + total_price);
+                // $('.total_price').html("Rs: " + total_price);
             }
         })
     });
+
+    $('#checkout').on('click', function() {
+
+    })
 
     function delete_data(cart_id) {
         $.ajax({

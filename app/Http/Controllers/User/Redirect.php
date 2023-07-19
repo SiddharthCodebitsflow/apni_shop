@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Response;
+use App\Models\Api\Products;
 use Illuminate\Http\Request;
 
 class Redirect extends Controller
@@ -26,7 +26,7 @@ class Redirect extends Controller
             return redirect('user-home');
         }
     }
-    
+
     public function user_register()
     {
         if (session('login_id')) {
@@ -63,6 +63,19 @@ class Redirect extends Controller
         return view('user/user_cart');
     }
 
+    public function process_to_checkout($id)
+    {
+        return view('user/user_checkout')->with(['product_id' => $id]);
+    }
+    public function checkout()
+    {
+        return view('user/checkout');
+    }
+    public function search(Request $request)
+    {
+        $product = Products::where('product_name','LIKE',"%{$request->search}%")->get(); 
+        return view('user/search')->with('product',$product);
+    }
     // public function add_to_cart_cookie(Request $request, $id, $qty)
     // {
     //     $minutes = 24 * 60;

@@ -17,7 +17,7 @@
                 if (data.status == 200) {
                     for (var i in data.data) {
                         // console.log(data.data[i].);
-                        $('.card-box').append('<div class="col-md-4 col-sm-6 my-4"><div class="card"><a href="#"><img  src="' + data.data[i].product_image + '" class="product-image card-img-top" alt=""></a><div class="card-body"> <h5 class="card-title">' + data.data[i].product_name + '</h5><div class="row"><div class="col-6"><a href="/product/'+data.data[i].id+'" class="btn bg-custome text-white">About</a></div><div class="col-6"><button onclick="delete_product('+data.data[i].id+')" class="btn bg-custome text-white">Delete</button></div></div>');
+                        $('.card-box').append('<div class="col-md-4 col-sm-6 my-4"><div class="card"><a href="#"><img  src="' + data.data[i].product_image + '" class="product-image card-img-top" alt=""></a><div class="card-body"> <h5 class="card-title">' + data.data[i].product_name + '</h5><div class="row"><div class="col-6"><a href="/about-product/'+data.data[i].id+'" class="btn bg-custome text-white">About</a></div><div class="col-6"><button onclick="delete_product('+data.data[i].id+')" class="btn bg-custome text-white">Delete</button></div></div>');
                     }
                 } else {
 

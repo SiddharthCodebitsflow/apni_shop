@@ -13,7 +13,6 @@ class Products extends Model
     protected $hidden = [
         'created_at',
         'updated_at',
-        'vendor_id'
     ];
     public function relationship()
     {
